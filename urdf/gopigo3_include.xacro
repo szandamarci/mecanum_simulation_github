@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+
+<robot name="gopigo3"
+  xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:property name="wheels_mass" value="0.032"/>
+  <xacro:property name="PI" value="3.1415"/>
+  <xacro:property name="wheels_radius" value="0.033"/>
+  <xacro:property name="wheels_length" value="0.026"/>
+  <xacro:property name="wheels_x_axis_offset" value="0"/>
+  <xacro:property name="track_width" value="0.112"/>
+
+  <xacro:macro name="inertial_cylinder" params="radius length mass *origin">
+    <inertial>
+      <xacro:insert_block name="origin"/>
+      <mass value ="${mass}" />
+      <inertia ixx="${(1/12)*mass*(3*radius*radius+length*length)}" ixy="0.0" ixz="0.0" iyy="${(1/12)*mass*(3*radius*radius+length*length)}" iyz="0.0" izz="${(1/2)*mass*radius*radius}" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="inertial_box" params="x y z mass *origin">
+    <inertial>
+      <xacro:insert_block name="origin"/>
+      <mass value ="${mass}" />
+      <inertia ixx="${mass/12*(z*z+y*y)}" ixy="0.0" ixz="0.0" iyy="${mass/12*(x*x+z*z)}" iyz="0.0" izz="${mass/12*(y*y+x*x)}" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="wheel" params="prefix reflect">
+    <link name="${prefix}_wheel">
+      <visual name="${prefix}_wheel_visual">
+        <geometry>
+          <cylinder length="${wheels_length}" radius="${wheels_radius}"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <material name="black" />
+      </visual>
+
+      <collision name="${prefix}_wheel_collision">
+        <geometry>
+          <cylinder length="${wheels_length}" radius="${wheels_radius}"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <!-- <surface>
+                    <friction>
+                        <ode>
+                            <mu>1.0</mu>
+                            <mu2>1.0</mu2>
+                            <slip1>0.0</slip1>
+                            <slip2>0.0</slip2>
+                        </ode>
+                    </friction>
+                </surface> -->
+      </collision>
+
+      <xacro:inertial_cylinder radius="${wheels_radius}" length="${wheels_length}" mass="${wheels_mass}">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:inertial_cylinder>
+    </link>
+
+
+    <joint name="${prefix}_wheel_base_link_joint" type="continuous">
+      <axis xyz="0 0 1" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="${prefix}_wheel"/>
+      <origin xyz="${wheels_x_axis_offset} ${reflect * track_width/2} 0" rpy="0 ${PI/2} ${PI/2}"/>
+      <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+  </xacro:macro>
+</robot>
