@@ -13,7 +13,7 @@ def generate_launch_description():
     package_name = 'mecanum_simulation_github'
     bringup_dir = get_package_share_directory('nav2_bringup')
     local_dir = get_package_share_directory(package_name)
-    world_file = os.path.join(local_dir, 'worlds/empty.sdf')
+    world_file = os.path.join(local_dir, 'worlds/house.sdf')
     rviz_dir = os.path.join(local_dir, 'rviz')
     xacro_file = os.path.join(local_dir, 'urdf/mecanum.xacro')
     description_raw = xacro.process_file(xacro_file).toxml()

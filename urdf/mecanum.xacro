@@ -2,11 +2,11 @@
 <robot xmlns:xacro="https://www.ros.org/wiki/xacro" name="mecanum" xmlns:ignition="http://gazebosim.org/schema">
 
 <!-- <xacro:include filename="hokuyo_ust10.xacro" /> -->
-<xacro:property name="radius" value="0.065" />
-<xacro:property name="length" value="0.08" />
-<xacro:property name="box_length" value="0.5" />
-<xacro:property name="box_width" value="0.3" />
-<xacro:property name="box_height" value="0.1" />
+<xacro:property name="radius" value="0.05" />
+<xacro:property name="length" value="0.06" />
+<xacro:property name="box_length" value="0.3" />
+<xacro:property name="box_width" value="0.2" />
+<xacro:property name="box_height" value="0.09" />
 
 <material name="blue">
  <color rgba="0 0 0.8 1" />
@@ -25,7 +25,7 @@
     <visual>
         <origin xyz="0 0 0" rpy="1.57075 0 0"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/Mecanum_jo.stl" scale="0.0015 0.0015 0.0015" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/Mecanum_jo.stl" scale="0.0010 0.0010 0.0010" />
         </geometry>
         <material name="black" />
     </visual>
@@ -44,7 +44,7 @@
 <joint name="front_right_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="front_right_wheel" />
-    <origin xyz="0.2 -${box_width/2+length/2} -0.03" />
+    <origin xyz="0.1 -${box_width/2+length/2} -0.03" />
     <axis xyz="0 1 0" />
 </joint>
 
@@ -53,7 +53,7 @@
     <visual>
         <origin xyz="0 0 0" rpy="1.57075 0 0"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/Mecanum_jo.stl" scale="0.0015 0.0015 0.0015" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/Mecanum_jo.stl" scale="0.0010 0.0010 0.0010" />
         </geometry>
         <material name="black" />
     </visual>
@@ -72,7 +72,7 @@
 <joint name="front_left_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="front_left_wheel" />
-    <origin xyz="0.2 ${box_width/2+length/2} -0.03" />
+    <origin xyz="0.1 ${box_width/2+length/2} -0.03" />
     <axis xyz="0 1 0" />
 </joint>
 
@@ -81,7 +81,7 @@
     <visual>
         <origin xyz="0 0 0" rpy="1.57075 0 0"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/Mecanum_jo.stl" scale="0.0015 0.0015 0.0015" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/Mecanum_jo.stl" scale="0.0010 0.0010 0.0010" />
         </geometry>
         <material name="black" />
     </visual>
@@ -100,7 +100,7 @@
 <joint name="rear_left_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="rear_left_wheel" />
-    <origin xyz="-0.2 ${box_width/2+length/2} -0.03" />
+    <origin xyz="-0.1 ${box_width/2+length/2} -0.03" />
     <axis xyz="0 1 0" />
 </joint>
 
@@ -109,7 +109,7 @@
     <visual>
         <origin xyz="0 0 0" rpy="1.57075 0 0"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/Mecanum_jo.stl" scale="0.0015 0.0015 0.0015" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/Mecanum_jo.stl" scale="0.0010 0.0010 0.0010" />
         </geometry>
         <material name="black" />
     </visual>
@@ -128,7 +128,7 @@
 <joint name="rear_right_wheel_joint" type="continuous">
     <parent link="base_link" />
     <child link="rear_right_wheel" />
-    <origin xyz="-0.2 -${box_width/2+length/2} -0.03" />
+    <origin xyz="-0.1 -${box_width/2+length/2} -0.03" />
     <axis xyz="0 1 0" />
 </joint>
 
@@ -165,7 +165,7 @@
     <visual>
         <origin xyz="0 0 -0.05" rpy="0 0 3.14"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/sensors/hokuyo_ust10.stl" scale="1 1 1" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/sensors/hokuyo_ust10.stl" scale="0.8 0.8 0.8" />
         </geometry>
         <material name="white" />
     </visual>
@@ -186,14 +186,14 @@
 <joint name="scan_joint" type="fixed">
     <parent link="base_link" />
     <child link="base_scan" />
-    <origin xyz="0.175 0 0.1" rpy="0 0 3.1415" />
+    <origin xyz="0.1 0 0.09" rpy="0 0 0" />
 </joint>
 
 
 <gazebo reference="base_scan">
 <sensor name="base_scan" type="gpu_lidar">
 
-        <pose>0 0 0 0 0 0</pose>
+        <pose relative_to='base_scan'>0 0 0 0 0 0</pose>
 
         <topic>scan</topic>
         <gz_frame_id>base_scan</gz_frame_id>
@@ -205,19 +205,19 @@
 
             <horizontal>
 
-              <samples>1200</samples>
+              <samples>500</samples>
 
-              <resolution>0.8</resolution>
+              <resolution>1</resolution>
 
               <min_angle>0</min_angle>
 
               <max_angle>6.28</max_angle>
 
-              <angle_increment>0.0175</angle_increment>
+              <!-- <angle_increment>0.0175</angle_increment> -->
 
             </horizontal>
 
-            <vertical>
+            <!-- <vertical>
 
               <samples>1</samples>
 
@@ -227,7 +227,7 @@
 
               <max_angle>0</max_angle>
 
-            </vertical>
+            </vertical> -->
 
           </scan>
 
@@ -237,7 +237,7 @@
 
             <max>10.0</max>
 
-            <resolution>0.015</resolution>
+            <resolution>0.25</resolution>
 
           </range>
           <noise>
