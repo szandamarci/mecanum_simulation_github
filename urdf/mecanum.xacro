@@ -163,7 +163,7 @@
 
 <link name="base_scan">
     <visual>
-        <origin xyz="0 0 -0.05" rpy="0 0 3.14"  />
+        <origin xyz="0 0 -0.05" rpy="0 0 0"  />
         <geometry>
             <mesh filename="file://$(find mecanum_simulation_github)/meshes/sensors/hokuyo_ust10.stl" scale="0.8 0.8 0.8" />
         </geometry>
@@ -209,9 +209,9 @@
 
               <resolution>1</resolution>
 
-              <min_angle>0</min_angle>
+              <min_angle>-2.3562</min_angle>
 
-              <max_angle>6.28</max_angle>
+              <max_angle>2.3562</max_angle>
 
               <!-- <angle_increment>0.0175</angle_increment> -->
 
