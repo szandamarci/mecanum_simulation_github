@@ -88,7 +88,7 @@ def generate_launch_description():
                 )
 
     declare_joy_vel = DeclareLaunchArgument('joy_vel', default_value='cmd_vel')
-    declare_joy_config = DeclareLaunchArgument('joy_config', default_value='xbox')
+    declare_joy_config = DeclareLaunchArgument('joy_config', default_value='xboxsim')
     declare_joy_dev = DeclareLaunchArgument('joy_dev', default_value='0')
     declare_publish_stamped_twist = DeclareLaunchArgument('publish_stamped_twist', default_value='false')
     declare_config_filepath = DeclareLaunchArgument('config_filepath', default_value=[
