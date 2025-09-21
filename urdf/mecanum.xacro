@@ -22,6 +22,10 @@
 <material name="white">
  <color rgba="1 1 1 1" />
 </material>
+<material name="orange">
+ <color rgba="1 0.5 0 1" />
+</material>
+
 
 <link name="front_right_wheel">
     <visual>
@@ -189,6 +193,198 @@
     <parent link="base_link" />
     <child link="base_scan" />
     <origin xyz="0.1 0 0.09" rpy="0 0 0" />
+</joint>
+
+<link name="link_0">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <geometry>
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_0.stl" scale="0.0003 0.0003 0.0003" />
+        </geometry>
+        <material name="orange" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"  />
+        <geometry>
+            <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="${1/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" iyy="${1/2*mass*radius*radius}" iyz="0" izz="${1/12*mass*(3*radius*radius+length*length)}" />
+    </inertial>
+</link>
+<joint name="teto" type="fixed">
+    <parent link="base_link" />
+    <child link="link_0" />
+    <origin xyz="-0.02 0 0.05" />
+    <axis xyz="0 1 0" />
+</joint>
+
+
+<link name="link_1">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <geometry>
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_1.stl" scale="0.0003 0.0003 0.0003" />
+        </geometry>
+        <material name="orange" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"  />
+        <geometry>
+            <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="${1/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" iyy="${1/2*mass*radius*radius}" iyz="0" izz="${1/12*mass*(3*radius*radius+length*length)}" />
+    </inertial>
+</link>
+<joint name="rob_joint_1" type="fixed">
+    <parent link="link_0" />
+    <child link="link_1" />
+    <origin xyz="-0.02 0 0.05" />
+    <axis xyz="0 1 0" />
+</joint>
+
+<link name="link_2">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <geometry>
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_2.stl" scale="0.0003 0.0003 0.0003" />
+        </geometry>
+        <material name="orange" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"  />
+        <geometry>
+            <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="${1/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" iyy="${1/2*mass*radius*radius}" iyz="0" izz="${1/12*mass*(3*radius*radius+length*length)}" />
+    </inertial>
+</link>
+<joint name="rob_joint_2" type="fixed">
+    <parent link="link_1" />
+    <child link="link_2" />
+    <origin xyz="-0.02 0 0.05" />
+    <axis xyz="0 1 0" />
+</joint>
+
+
+<link name="link_3">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <geometry>
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_3.stl" scale="0.0003 0.0003 0.0003" />
+        </geometry>
+        <material name="orange" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"  />
+        <geometry>
+            <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="${1/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" iyy="${1/2*mass*radius*radius}" iyz="0" izz="${1/12*mass*(3*radius*radius+length*length)}" />
+    </inertial>
+</link>
+<joint name="rob_joint_3" type="fixed">
+    <parent link="link_2" />
+    <child link="link_3" />
+    <origin xyz="-0.02 0 0.05" />
+    <axis xyz="0 1 0" />
+</joint>
+
+<link name="link_4">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <geometry>
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_4.stl" scale="0.0003 0.0003 0.0003" />
+        </geometry>
+        <material name="orange" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"  />
+        <geometry>
+            <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="${1/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" iyy="${1/2*mass*radius*radius}" iyz="0" izz="${1/12*mass*(3*radius*radius+length*length)}" />
+    </inertial>
+</link>
+<joint name="rob_joint_4" type="fixed">
+    <parent link="link_3" />
+    <child link="link_4" />
+    <origin xyz="-0.02 0 0.05" />
+    <axis xyz="0 1 0" />
+</joint>
+
+
+<link name="link_5">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <geometry>
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_5.stl" scale="0.0003 0.0003 0.0003" />
+        </geometry>
+        <material name="orange" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"  />
+        <geometry>
+            <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="${1/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" iyy="${1/2*mass*radius*radius}" iyz="0" izz="${1/12*mass*(3*radius*radius+length*length)}" />
+    </inertial>
+</link>
+<joint name="rob_joint_5" type="fixed">
+    <parent link="link_4" />
+    <child link="link_5" />
+    <origin xyz="-0.02 0 0.05" />
+    <axis xyz="0 1 0" />
+</joint>
+
+<link name="link_6">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <geometry>
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_6.stl" scale="0.0003 0.0003 0.0003" />
+        </geometry>
+        <material name="orange" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"  />
+        <geometry>
+            <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="${1/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" iyy="${1/2*mass*radius*radius}" iyz="0" izz="${1/12*mass*(3*radius*radius+length*length)}" />
+    </inertial>
+</link>
+<joint name="rob_joint_6" type="fixed">
+    <parent link="link_5" />
+    <child link="link_6" />
+    <origin xyz="-0.02 0 0.05" />
+    <axis xyz="0 1 0" />
 </joint>
 
 
@@ -375,5 +571,10 @@
     <mu2>0.000002</mu2>
   </gazebo>
 
+  <gazebo reference="link_0">
+    <material>Gazebo/Orange</material>
+    <mu1>0.000002</mu1>
+    <mu2>0.000002</mu2>
+  </gazebo>
   
 </robot>
