@@ -201,7 +201,7 @@
         <geometry>
             <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_0.stl" scale="0.0003 0.0003 0.0003" />
         </geometry>
-        <material name="yellow" />
+        <material name="black" />
     </visual>
     <collision>
         <origin xyz="0 0 0" rpy="0 0 0"  />
@@ -225,11 +225,11 @@
 
 <link name="link_1">
     <visual>
-        <origin xyz="-0.020 -0.030 -0.005" rpy="1.57075 0 0"  />
+        <origin xyz="-0.020 -0.030 -0.065" rpy="1.57075 0 0"  />
         <geometry>
             <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_1.stl" scale="-0.0003 0.0003 0.0003" />
         </geometry>
-        <material name="blue" />
+        <material name="orange" />
     </visual>
     <collision>
         <origin xyz="0 0 0" rpy="0 0 0"  />
@@ -246,17 +246,17 @@
 <joint name="rob_joint_1" type="fixed">
     <parent link="link_0" />
     <child link="link_1" />
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0.060" rpy="0 0 0"/>
     <axis xyz="0 0 1" />
 </joint>
 
 <link name="link_2">
     <visual>
-        <origin xyz="0.01 -0.045 -0.025" rpy="1.57075 0 0"  />
+        <origin xyz="0.005 -0.115 0.048" rpy="0 0 0"  />
         <geometry>
             <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_2.stl" scale="-0.0003 0.0003 0.0003" />
         </geometry>
-        <material name="yellow" />
+        <material name="orange" />
     </visual>
     <collision>
         <origin xyz="0 0 0" rpy="0 0 0"  />
@@ -273,16 +273,16 @@
 <joint name="rob_joint_2" type="fixed">
     <parent link="link_1" />
     <child link="link_2" />
-    <origin xyz="0.01 0 0.07" />
+    <origin xyz="0.01 0 0" rpy="-1.57075 0 0"/>
     <axis xyz="0 1 0" />
 </joint>
 
 
 <link name="link_3">
     <visual>
-        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <origin xyz="0.015 -0.025 0.0235" rpy="0 0 0"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_3.stl" scale="0.0003 0.0003 0.0003" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_3.stl" scale="-0.0003 0.0003 0.0003" />
         </geometry>
         <material name="orange" />
     </visual>
@@ -301,15 +301,15 @@
 <joint name="rob_joint_3" type="fixed">
     <parent link="link_2" />
     <child link="link_3" />
-    <origin xyz="-0.02 0 1" />
+    <origin xyz="0 -0.090 0" rpy="3.14 0 0" />
     <axis xyz="0 1 0" />
 </joint>
 
 <link name="link_4">
     <visual>
-        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <origin xyz="0.04 -0.020 0.015" rpy="0 0 0"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_4.stl" scale="0.0003 0.0003 0.0003" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_4.stl" scale="-0.0003 0.0003 0.0003" />
         </geometry>
         <material name="orange" />
     </visual>
@@ -328,16 +328,16 @@
 <joint name="rob_joint_4" type="fixed">
     <parent link="link_3" />
     <child link="link_4" />
-    <origin xyz="-0.02 0 1" />
+    <origin xyz="0.065 0.025 0" />
     <axis xyz="0 1 0" />
 </joint>
 
 
 <link name="link_5">
     <visual>
-        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <origin xyz="0.020 -0.02 0.02" rpy="0 0 0"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_5.stl" scale="0.0003 0.0003 0.0003" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_5.stl" scale="-0.0003 0.0003 0.0003" />
         </geometry>
         <material name="orange" />
     </visual>
@@ -356,17 +356,17 @@
 <joint name="rob_joint_5" type="fixed">
     <parent link="link_4" />
     <child link="link_5" />
-    <origin xyz="-0.02 0 1" />
+    <origin xyz="0.045 0 0" />
     <axis xyz="0 1 0" />
 </joint>
 
 <link name="link_6">
     <visual>
-        <origin xyz="0 0 0" rpy="1.57075 0 0"  />
+        <origin xyz="0.01 -0.021 0.021" rpy="0 0 0"  />
         <geometry>
-            <mesh filename="file://$(find mecanum_simulation_github)/meshes/simplify_link_6.stl" scale="0.0003 0.0003 0.0003" />
+            <mesh filename="file://$(find mecanum_simulation_github)/meshes/link_6.stl" scale="-0.0003 0.0003 0.0003" />
         </geometry>
-        <material name="orange" />
+        <material name="black" />
     </visual>
     <collision>
         <origin xyz="0 0 0" rpy="0 0 0"  />
@@ -383,7 +383,7 @@
 <joint name="rob_joint_6" type="fixed">
     <parent link="link_5" />
     <child link="link_6" />
-    <origin xyz="-0.02 0 1" />
+    <origin xyz="0.033 0 0" />
     <axis xyz="0 1 0" />
 </joint>
 
